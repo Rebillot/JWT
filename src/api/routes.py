@@ -86,7 +86,8 @@ def handle_login():
 
     if check_password_hash(user.password, data['password']):
         auth_token = encode_auth_token(user.id)
-        response_body = {"response": "Logged in correctly", "token": str(auth_token)}
+        print(f"auth_token value: {auth_token}")
+        response_body = {"response": "Logged in correctly", "token": auth_token}
         return jsonify(response_body), 200
     else:
         response_body = {"response": "Invalid Email or Password ", "token": None}

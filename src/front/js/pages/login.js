@@ -9,7 +9,7 @@ export const Login = () => {
     const navigate = useNavigate()
 
     return (
-        <div className="container-fluid card w-50 mt-3">
+        <div className="container-fluid card w-50 mt-3 bg-dark text-white">
             <div className="card-body">
                 <h5 className="card-title">Login</h5>
                 <form onSubmit={(e) => {

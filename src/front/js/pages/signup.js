@@ -11,9 +11,9 @@ export const Signup = () => {
     const navigate = useNavigate()
 
     return (
-        <div className="container-fluid card w-50 mt-3">
+        <div className="container-fluid card w-50 mt-3 bg-dark text-white">
             <div className="card-body">
-                <h5 className="card-title">Register</h5>
+                <h5 className="card-title">Join us KING!</h5>
                 <form onSubmit={(e) => {
                     e.preventDefault();
                     actions.register({ email, password })

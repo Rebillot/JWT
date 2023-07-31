@@ -60,7 +60,7 @@ def handle_register():
         response_body = {"response": "Email already in use"}
         return jsonify(response_body), 401
 
-    hashed_password = generate_password_hash(data['password'], method='sha256')
+    hashed_password = generate_password_hash(str(data['password']), method='sha256')
     new_user = User(
         email=data["email"],
         password=hashed_password,
@@ -77,7 +77,6 @@ def handle_register():
 
 @api.route("/login", methods=["GET", "POST"])
 def handle_login():
-
     data = request.get_json()
 
     user = User.query.filter_by(email=data['email']).first()
@@ -87,12 +86,10 @@ def handle_login():
 
     if check_password_hash(user.password, data['password']):
         auth_token = encode_auth_token(user.id)
-        response_body = {"response": "Logged in correctly",
-                         "token": auth_token}
+        response_body = {"response": "Logged in correctly", "token": str(auth_token)}
         return jsonify(response_body), 200
     else:
-        response_body = {
-            "response": "Invalid Email or Password ", "token": None}
+        response_body = {"response": "Invalid Email or Password ", "token": None}
         return jsonify(response_body), 401
 
 

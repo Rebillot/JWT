@@ -31,14 +31,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: 'follow'
 				};
 
-				fetch("http://localhost:3001/api/register", requestOptions)
+				fetch(process.env.BACKEND_URL + "/api/register", requestOptions)
 					.then(response => response.json())
 					.then(result => alert(result.response))
 					.catch(error => alert('error', error));
 			},
 			login: async (values) => {
 				const myHeaders = new Headers();
-				myHeaders.append("Content-Type", "application/json");
+				myHeaders.append("Content-Type", "application/json", "Access-Control-Allow-Origin", "*");
 
 				const raw = JSON.stringify({
 					"email": values.email,
@@ -52,7 +52,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: 'follow'
 				};
 
-				fetch("http://localhost:3001/api/login", requestOptions)
+				fetch(process.env.BACKEND_URL + "/api/login", requestOptions)
 					.then(response => response.json())
 					.then(result => {
 						alert(result.response);
@@ -79,7 +79,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: 'follow'
 				};
 
-				fetch("http://localhost:3001/api/private", requestOptions)
+				fetch(process.env.BACKEND_URL + "/api/private", requestOptions)
 					.then(response => response.json())
 					.then(result => alert('Your user id is: ' + result.sub))
 					.catch(error => console.log('error', error));

@@ -19,9 +19,7 @@ export const Private = () => {
                     <h5 className="card-title">Just for your eyes</h5>
                     <p className="card-text">Your token is: {store.token} Remember it is valid just for 24 hours</p>
                 </div>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item" onClick={e => actions.getUserId()}><Link>Click to ask to the server your user id</Link></li>
-                </ul>
+            
                 <div className="card-body">
                     <Link to="/" className="card-link">Return to Home</Link>
                 </div>
